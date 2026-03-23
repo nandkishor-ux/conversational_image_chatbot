@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><title>VisionAI — Chat</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+<div class="mesh-bg"></div>
+<div class="chat-page">
+  <header class="app-header">
+    <div class="header-logo" onclick="navigateTo('upload.html')"><div class="logo-mark"><i class="fa-solid fa-eye"></i></div> VisionAI</div>
+    <div class="header-right"><div class="model-badge">Claude Vision</div><button class="btn btn-ghost" onclick="Auth.logout()"><i class="fa-solid fa-right-from-bracket"></i></button></div>
+  </header>
+  <div class="chat-layout">
+    <aside class="image-panel"><div class="panel-label">Image</div><img class="uploaded-img" id="panel-img" src="" /><button class="btn btn-ghost" onclick="navigateTo('upload.html')">New Image</button></aside>
+    <div class="chat-pane">
+      <div class="messages-area" id="messages-area"></div>
+      <div class="chat-input-area">
+        <div class="chat-input-wrap">
+          <textarea class="chat-textarea" id="chat-input" placeholder="Ask about the image..." oninput="autoResize(this)"></textarea>
+          <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const img = sessionStorage.getItem('vision-image');
+  if(img) document.getElementById('panel-img').src = img;
+  addMessage('bot', "Hello! I've analyzed your image. What would you like to know?");
+});
+function addMessage(role, text) {
+  const area = document.getElementById('messages-area');
+  const div = document.createElement('div');
+  div.className = `message ${role}`;
+  div.innerHTML = `<div class="msg-bubble">${text}</div>`;
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+function sendMessage() {
+  const input = document.getElementById('chat-input');
+  if(!input.value) return;
+  addMessage('user', input.value);
+  const userText = input.value.toLowerCase();
+  input.value = '';
+  setTimeout(() => {
+    let resp = "That's an interesting detail! (Note: Connect API for real analysis)";
+    if(userText.includes('describe')) resp = "The image shows a vibrant scene with distinct lighting and clear subject matter.";
+    addMessage('bot', resp);
+  }, 800);
+}
+</script>
+</body>
+</html>

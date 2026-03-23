@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><title>VisionAI — Upload</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+<div class="mesh-bg"><div class="mesh-orb3"></div></div>
+<div class="grain"></div>
+<div class="upload-page">
+  <header class="app-header">
+    <div class="header-logo"><div class="logo-mark"><i class="fa-solid fa-eye"></i></div> VisionAI</div>
+    <div class="header-right"><div class="user-chip"><div class="user-avatar" id="user-avatar-char">U</div><span id="user-display-name">User</span></div><button class="btn btn-ghost" onclick="Auth.logout()">Sign out</button></div>
+  </header>
+  <main class="upload-main">
+    <div class="upload-headline"><h2>Drop your <span class="gradient-text">image</span> here</h2><p>Our AI will analyse and describe it instantly</p></div>
+    <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+      <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <div class="drop-text"><strong>Drag & drop image</strong><span>or click to browse</span></div>
+      <input type="file" id="file-input" accept="image/*" style="display:none" onchange="onFileSelect(event)" />
+    </div>
+    <div class="preview-section glass" id="preview-section">
+      <div class="preview-card">
+        <img class="preview-thumb" id="preview-thumb" src="" /><div class="preview-meta"><div class="preview-name" id="preview-name"></div><div class="preview-bar-wrap"><div class="preview-bar" id="preview-bar"></div></div></div>
+        <button class="remove-preview" onclick="location.reload()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+    <button class="btn btn-primary analyze-btn" id="analyze-btn" onclick="analyzeImage()" style="display:none; width:100%; max-width:560px; margin-top:20px;">Analyse with AI</button>
+  </main>
+</div>
+<div class="upload-progress" id="upload-progress"><div class="glass progress-card"><h2>Processing...</h2></div></div>
+<script src="app.js"></script>
+<script>
+let selectedDataURL = null;
+function onFileSelect(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    selectedDataURL = ev.target.result;
+    document.getElementById('preview-thumb').src = selectedDataURL;
+    document.getElementById('preview-name').textContent = file.name;
+    document.getElementById('preview-section').style.display = 'block';
+    document.getElementById('analyze-btn').style.display = 'flex';
+  };
+  reader.readAsDataURL(file);
+}
+function analyzeImage() {
+  document.getElementById('upload-progress').classList.add('show');
+  sessionStorage.setItem('vision-image', selectedDataURL);
+  setTimeout(() => navigateTo('chat.html'), 1500);
+}
+</script>
+</body>
+</html>
