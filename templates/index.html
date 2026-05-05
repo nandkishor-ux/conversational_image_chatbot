@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual AI Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="image-panel">
+            <h2>Your Visual Context</h2>
+            <div id="image-upload-box" class="image-upload-box">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                    <p>Drag & Drop an Image Here</p>
+                    <span>or</span>
+                    <button id="browse-button" class="browse-button">Browse Files</button>
+                </div>
+                <input type="file" id="image-upload-input" accept="image/*" hidden>
+            </div>
+            <div id="image-preview-container" class="image-preview-container" style="display: none;">
+                <img id="image-preview" src="#" alt="Uploaded Image Preview">
+                <button id="remove-image-button" class="remove-image-button">&times;</button>
+            </div>
+        </div>
+
+        <div class="chat-panel">
+            <div class="chat-header">
+                <h2>Conversation with DrishtiAI</h2>
+            </div>
+            <div id="chat-history" class="chat-history">
+                <div class="ai-message">
+                    <p>Hello! Please upload an image on the left to begin our conversation.</p>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="question-input" placeholder="Ask a question about the image..." disabled>
+                <button id="ask-button" disabled><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
