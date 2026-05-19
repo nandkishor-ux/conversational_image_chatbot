@@ -1,10 +1,10 @@
-# 👁️ VisionAI
+#  VisionAI
 
 A sleek, AI-powered image analysis web app with a chat interface. Upload an image, then have a conversation about it — all within a polished dark-mode UI.
 
 > **Note:** This is a frontend-only prototype. The AI responses are currently mocked. To enable real image analysis, connect a vision-capable model via API (e.g. Claude, GPT-4o).
 
-## ✨ Features
+##  Features
 
 - **Sign In / Sign Up** — tab-switched auth form with password strength meter and show/hide toggle
 - **Image Upload** — drag-and-drop or click-to-browse with file preview and animated progress overlay
@@ -14,7 +14,7 @@ A sleek, AI-powered image analysis web app with a chat interface. Upload an imag
 - **Page Transitions** — fade + slide animations between pages
 - **Responsive** — mobile-friendly layout (image panel collapses on small screens)
 
-## 📁 File Structure
+##  File Structure
 
 ```
 visionai/
@@ -25,7 +25,7 @@ visionai/
 └── styles.css      # Full design system & component styles
 ```
 
-## 🔄 User Flow
+##  User Flow
 
 ```
 index.html  ──►  upload.html  ──►  chat.html
@@ -37,7 +37,7 @@ index.html  ──►  upload.html  ──►  chat.html
 3. Image is stored in `sessionStorage` and the user is taken to `chat.html`
 4. User can ask questions about the image and receive (currently mocked) AI responses
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -50,7 +50,7 @@ index.html  ──►  upload.html  ──►  chat.html
 
 No build tools, frameworks, or dependencies required.
 
-## 🚀 Getting Started
+## Getting Started
 
 Since this is plain HTML/CSS/JS, just open the files in a browser:
 
@@ -66,7 +66,7 @@ python -m http.server 8080
 
 Then visit `http://localhost:8080`.
 
-## 🔌 Connecting a Real AI API
+##  Connecting a Real AI API
 
 The mock responses in `chat.html` can be replaced with actual API calls. Look for the `sendMessage()` function:
 
@@ -90,7 +90,7 @@ async function sendMessage() {
 }
 ```
 
-## 🎨 Design System
+##  Design System
 
 All visual tokens are defined as CSS custom properties in `styles.css`:
 
@@ -105,7 +105,7 @@ All visual tokens are defined as CSS custom properties in `styles.css`:
 
 Light mode overrides all surface and text tokens automatically when `body.light` is applied.
 
-## 📝 Known Limitations
+##  Known Limitations
 
 - **No real authentication** — login accepts any input and stores the username locally
 - **No backend** — uploaded images are not sent anywhere; they live only in `sessionStorage`
