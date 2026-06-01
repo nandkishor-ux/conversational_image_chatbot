@@ -1,6 +1,6 @@
 # 💬 Conversational Image Recognition Chatbot
 
-> A full-stack multimodal AI chatbot that lets users ask natural language questions about images — built from concept to working prototype in under 36 hours.
+ A full-stack multimodal AI chatbot that lets users ask natural language questions about images — built from concept to working prototype in under 36 hours.
 
 [![HTML](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-E34F26?logo=html5)]()
 [![AI](https://img.shields.io/badge/AI-Multimodal-blueviolet)]()
